@@ -55,3 +55,52 @@ Code after this point handles the interaction of data and on screen characterist
 
 // Hide the modal container until a card is clicked
 $('.modal-container').hide();
+
+//Send request for json data
+// let xhr = new XMLHttpRequest();
+// xhr.onreadystatechange= function (){
+//   if(xhr.readyState === 4){
+//     let modal = JSON.parse(xhr.responseText);
+//     for(let i=0; i < modal.length; i++){
+//       modal[i].img;
+//       modal[i].firstName;
+//       modal[i].lastName;
+//       modal[i].email;
+//       modal[i].loc;
+//       modal[i].ph;
+//       modal[i].birthday;
+//     }
+//   }
+// };
+// xhr.open('GET', 'data/modal.json');
+// xhr.send();
+
+$.ajax({
+  url: 'https://randomuser.me/api/1.2/?nat=us&inc=gender,name,location,email,dob,cell,id,picture,nat',
+  dataType: 'json',
+  success: function(data) {
+    data.results.forEach( dataModal => {
+      const modal = dataModal;
+      let image = dataModal.picture.medium;
+      let firstName = dataModal.name.first;
+      let lastName = dataModal.name.last;
+      let email = dataModal.email;
+      let city = dataModal.location.city;
+      let state = dataModal.location.state;
+      let phone = dataModal.cell;
+      let dob = /[0-9]{4}-[0-9]{2}-[0-9]{2}/.exec(dataModal.dob.date)[0];
+      let nat = dataModal.nat;
+      createImage(image);
+      placeFName(firstName);
+    })
+  }
+});
+
+function createImage(image){
+  $('.card-img').prop('src',`${image}`);
+  $('.modal-info-container').prop('src',`${image}`);
+}
+
+function placeFName(){
+  $('#name')
+}
