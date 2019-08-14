@@ -19,7 +19,8 @@ class Modal{
     //Creates the image and information containers within the card
     $(`#card_${this.firstName}_${this.lastName}`)
         .append(`<div class="card-img-container" id="card_img_${this.firstName}_${this.lastName}">`)
-        .append(`<div class="card-info-container" id="card_info_${this.firstName}_${this.lastName}">`);
+        .append(`<div class="card-info-container" id="card_info_${this.firstName}_${this.lastName}">`)
+        .click(function(e){createInfoContainer(e)});
   }
 
   createContent(){
