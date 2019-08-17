@@ -20,7 +20,7 @@ class Modal{
     $(`#card_${this.firstName}_${this.lastName}`)
         .append(`<div class="card-img-container" id="card_img_${this.firstName}_${this.lastName}">`)
         .append(`<div class="card-info-container" id="card_info_${this.firstName}_${this.lastName}">`)
-        .click(function(e){createInfoContainer(e)});
+        .click((e) => createInfoContainer(e));
   }
 
   createContent(){
@@ -30,12 +30,12 @@ class Modal{
 
     //Inserts the profile picture in the image holder for each card
     $(`#card_img_${this.firstName}_${this.lastName}`)
-        .append(`<img class="card-img" src="${this.image}" alt="profile picture" id="${this.cardCount}">`);
+        .append(`<img class="card-img" src="${this.image}" alt="profile picture" id="${this.image}">`);
 
     //Inserts the profile info in the card info container
     $(`#card_info_${this.firstName}_${this.lastName}`)
-        .append(`<h3 id="name" class="card-name cap" id="card_">${this.firstName} ${this.lastName}</h3>`)
-        .append(`<p class="card-text" id="card_${this.cardCount}">${this.email}</p>`)
-        .append(`<p class="card-text cap" id="card_${this.cardCount}">${this.city}, ${this.state}</p>`);
+        .append(`<h3 id="name" class="card-name cap" id="card_${this.firstName}_${this.lastName}">${this.firstName} ${this.lastName}</h3>`)
+        .append(`<p class="card-text" id="card_${this.email}">${this.email}</p>`)
+        .append(`<p class="card-text cap" id="card_${this.city}">${this.city}</p>`);
   }
 }
