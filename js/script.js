@@ -8,7 +8,8 @@ let scrollIndex;
 $('.search-container')
     .append('<input type="search" id="search-input" class="search-input" placeholder="Search...">')
     .keyup(search)
-    .append('<input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">');
+    .append('<input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">')
+    .click(search);
 
 function search (){
   let searchText = $('#search-input').val();
